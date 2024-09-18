@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 08:29:27 by rdos-san          #+#    #+#             */
-/*   Updated: 2024/09/17 08:46:39 by rdos-san         ###   ########.fr       */
+/*   Created: 2024/09/17 13:42:49 by rdos-san          #+#    #+#             */
+/*   Updated: 2024/09/17 14:12:44 by rdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-//O que seria um ponteiro void?
-//como pode um int c receber um caractere?
-void	*ft_memset(void *str, int c, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
+	char	*str;
 	size_t	i;
-	//char	*s;
-//Pq criar um ponteiro para receber o valor do int ?
-	//s = (char *)str;
+
 	i = 0;
-	while (i < n)
+	str = (char *)s;
+	
+	while(i < n)
 	{
-		((char*)(str))[i] = c;
+		printf("i: %zu/ n: %zu \n", i, n);
+		str[i] = 0;
 		i++;
 	}
-	return(str);
+	printf("%s", str);
+	return;
 }
 
 int	main(void)
 {
 	char	str[] = "string";
-
-
-	printf("%s\n", str);
-	ft_memset(str, '*', 2);
-	printf("%s", str);
+	
+	ft_bzero(str, 2);
+	return(0);
 }
-
