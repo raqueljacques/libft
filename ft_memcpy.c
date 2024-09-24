@@ -6,19 +6,19 @@
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:01:19 by rdos-san          #+#    #+#             */
-/*   Updated: 2024/09/18 19:49:24 by rdos-san         ###   ########.fr       */
+/*   Updated: 2024/09/20 17:00:59 by rdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-void	*memcpy(void *destination, const void *source, size_t num)
+void	*ft_memcpy(void *destination, const void *source, size_t num)
 {
 	size_t	c;
 	char	*dest;
 	char	*sou;
-
+	
 	c = 0;
 	dest = (char *)destination;
 	sou = (char *)source;
@@ -32,12 +32,19 @@ void	*memcpy(void *destination, const void *source, size_t num)
 
 int	main(void)
 {
+	char	str[] = "start stop";
 	char	*str1 = "string";
-	char	str2[10];
-	size_t	n = 3;
+	char	str2[1];
 
-	printf("%s | %s \n", str2, str1);
-	memcpy(str2, str1, n);
-	printf("%s | %s \n", str2, str1);
+	printf("--------------------------------\n");
+	printf("%s \n", str);
+	ft_memcpy(str, str + 6, 4 * sizeof(char));
+	printf("%s \n", str);
+	
+	printf("--------------------------------\n");
+	printf("%s \n", str2);
+	ft_memcpy(str2, str1, 6);
+	printf("%s \n", str2);
+
 	return(0);
 }
