@@ -10,22 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*memmove(void *destination, const void * source, size_t num)
+#include "libft.h"
+
+void	*memmove(void *dest, const void * src, size_t n)
 {
-	size_t c;
-	char	*dest;
-	char	*sou;
-	char	*sourceCopy;
+	int	c;
+	char	*dst;
+	char	*origin;
+	//temp will be an array with n+1 positions to store the src
+	char	temp[n + 1];
+
+	if (!dest && !src)
+		return (NULL);
 
 	c = 0;
-	dest = (char *)destination;
-        sou = (char *)source;
+	//cast para char
+	dst = (char *)dest;
+	origin = (char *)src;
 
-	sourceCopy = sou;
-	//copy the value of source to another variable
-	//ou vai ser um strcopy
-	//while to put the source saved in the destination
+	//copy src to temp
+	while ( c < n)
+	{
+		temp[c] = origin[c];
+		c++;
+	}
+	temp[c] = '\0';
 	
+	c = 0;
+	//copy temp to dst
+	while (c < n)
+	{
+		dst[c] = temp[c]
+		c++;
+	}
+
+	return(dest);	
 }
 
 int	main(void)
