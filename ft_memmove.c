@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	*memmove(void *dest, const void * src, size_t n)
+void	*ft_memmove(void *dest, const void * src, size_t n)
 {
 	int	c;
 	char	*dst;
@@ -51,7 +51,7 @@ int	main(void)
 {
 	char	str[] = "0123456789";
 
-	memmove(str+5, str, 5);
+	ft_memmove(str+5, str, 5);
 	printf("%s \n", str); 
 	return(0);
 }
