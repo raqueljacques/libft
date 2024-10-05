@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//The strlen() function calculates the length of the string s, excluding the terminating null byte ('\0').
-size_t	ft_strlen(char const *string)
+// the function ft_strncmp() compares the two strings s1 and s2. It compares not more than n characters. Because strncmp() is designed for comparing strings rather than binary data, characters that appear after a `\0' character are not compared.
+// Negative, if the str1 is less than str2.
+// Positive, if the str2 is less than str1.
+// zero, if the str1 is equal to str2.
+int     ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-	
-	i = 0;
-	while (string[i])
-		i++;
-	return(i);
-}
+    size_t i;
 
-/*
-int	main(void)
-{
-	char	string[] = "string";
-
-	printf("%c: %d", string, ft_strlen(string);
-	return(0);
+    i = 0;
+    while (i < n)
+    {
+        if (s1[i] == '\0' || s2[i] == '\0' || s1[i] != s2[i])
+        {
+            return (s1[i] - s2[i]);
+        }
+        i++;
+    }
+    return (0);
 }
-*/

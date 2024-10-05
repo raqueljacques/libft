@@ -13,6 +13,10 @@
 #ifndef LIBFT_H //verifica se a libft já foi definida
 # define LIBFT_H //define a libft, garantindo que não será definida novamente
 
+# include <stdlib.h>
+
+
+
 /* is funcions*/
 int ft_isalpha(int c);
 int	ft_isdigit(int c);

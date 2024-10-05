@@ -14,6 +14,8 @@
 
 //O que seria um ponteiro void?
 //como pode um int c receber um caractere?
+
+//The memset() function fills the first n bytes of the memory area pointed to by s with the constant byte c.
 void	*ft_memset(void *str, int c, size_t n)
 {
 	size_t	i;

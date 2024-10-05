@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//The memcpy() function copies n bytes from memory area src to memory area dest.  The memory areas must not overlap.  Use memmove(3) if the memory areas do overlap.
 void	*ft_memcpy(void *destination, const void *source, size_t num)
 {
 	size_t	c;
