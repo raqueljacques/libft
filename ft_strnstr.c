@@ -1,39 +1,46 @@
 #include <stdio.h>
-
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
 
 //If little is an empty string, big is returned; if little occurs nowhere in big, NULL is
 //returned; otherwise a pointer to the first character of the first occurrence of little is
 // returned.
 char    *ft_strnstr(const char *big, const char *little, size_t n)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	j = 0;
-	while (little[i] != '\0' && n > 0)
+	if (little[0] == '\0' || little == NULL)
+		return ((char*)big);
+	//Passa por todos os caracteres de big
+	while (big[i] != '\0' && i < n)
 	{
-		if (little[i] == big[j])
+		j = 0;	
+		//passa por todos os caracteres de little
+		while(little[j] != '\0')
 		{
-			i++;
+			//Verifica se são os mesmos caracteres
+			if (little[j] != big[i + j])
+				break;
+			//Se tiver no ultimo caractere de little
+			if (little[j + 1] == '\0')
+				return((char *)big + i);
+			j++;
 		}
-		j++;
-		n--;
+		i++;
 	}
-	if (i == ft_strlen(little)
-	{
-
-	}
-
+	return(NULL);
 }
 
 int	main(void)
 {
-	const char *large = "Foo Bar Baz";
+	const char *large = "For Bar Baz";
 	const char *small = "Bar";
 	char *ptr;
 
-	ptr = ft_strnstr(largestring, smallstring, 4);
+	ptr = ft_strnstr(large, small + 3, 4);
 	printf("string: %s", ptr);
 	return(0);
 }
