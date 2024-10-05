@@ -12,6 +12,7 @@ char    *ft_strnstr(const char *big, const char *little, size_t n)
 	size_t	j;
 
 	i = 0;
+	//regra da função.. se não for caractere nulo nem nulo
 	if (little[0] == '\0' || little == NULL)
 		return ((char*)big);
 	//Passa por todos os caracteres de big
@@ -21,12 +22,13 @@ char    *ft_strnstr(const char *big, const char *little, size_t n)
 		//passa por todos os caracteres de little
 		while(little[j] != '\0')
 		{
-			//Verifica se são os mesmos caracteres
+			//Verifica se não são os mesmos caracteres, e sai do loop
 			if (little[j] != big[i + j])
 				break;
-			//Se tiver no ultimo caractere de little
+			//Se tiver no ultimo caractere de little, retorna o big na posição de little
 			if (little[j + 1] == '\0')
 				return((char *)big + i);
+			//
 			j++;
 		}
 		i++;
