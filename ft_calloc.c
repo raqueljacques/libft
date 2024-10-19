@@ -23,7 +23,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
     //this code is not necessary because the malloc function knows how to handle this case
     //if (nmemb == 0 || size == 0)
     //    return NULL;
-    
+    //TODO: Verificar overflow de nmemb * size pq se a multiplicação for um número mt grande e
+    //passar o limite do size_t vai dar problema
     //Aloca memória para um array de nmemb elementos de size bytes cada
     mem = malloc(nmemb * size);
 
