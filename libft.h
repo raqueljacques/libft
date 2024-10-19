@@ -49,7 +49,7 @@
 //int	ft_atoi(const char *str);
 
 /* using malloc functions*/
-void	*ft_calloc(size_t count, size_t size);
+//void    *ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 
 /* part 2 - additional functions */
