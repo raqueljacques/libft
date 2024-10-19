@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,35 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
 
-//returns a pointer to the first occurrence of the character c in the string s
-char	*ft_strchr(const char *s, int c)
+// memchr function is used to search for the first occurrence of the character c (an unsigned char) in the first n bytes of the string pointed to, by the argument s. 
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-    int i;
+    unsigned char *char_to_find;
+    unsigned char str;
+    size_t i;
 
+    char_to_find = (unsigned char)c;
+    str = (unsigned char *)s;
     i = 0;
-    //while s[i] is not the end of the string and s[i] is not equal to c
-    while (s[i] != '\0' && s[i] != c)
+    if (n == 0)
+        return (NULL);
+    //não pode ser <= pq começa a contagem com 0
+    while(i < n)
     {
-        if (s[i] == c)
-            return ((char *)&s[i]);
+        if (str[i] == char_to_find)
+            return (&str[i]);
         i++;
     }
-    // difference between &s and *s and s
-    // *s is the value of the pointer
-    // s is the address of the pointer
-    // &s is the address of the pointer
     return (NULL);
 }
 
-int main(void)
-{
-    char str[] = "string";
-    char *ptr;
-
-    ptr = ft_strchr(str, 'r');
-    printf("%s", ptr);
-    return(0);
-}

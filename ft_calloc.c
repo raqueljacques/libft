@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,35 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
-
-//returns a pointer to the first occurrence of the character c in the string s
-char	*ft_strchr(const char *s, int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-    int i;
+    
 
-    i = 0;
-    //while s[i] is not the end of the string and s[i] is not equal to c
-    while (s[i] != '\0' && s[i] != c)
-    {
-        if (s[i] == c)
-            return ((char *)&s[i]);
-        i++;
-    }
-    // difference between &s and *s and s
-    // *s is the value of the pointer
-    // s is the address of the pointer
-    // &s is the address of the pointer
-    return (NULL);
-}
-
-int main(void)
-{
-    char str[] = "string";
-    char *ptr;
-
-    ptr = ft_strchr(str, 'r');
-    printf("%s", ptr);
-    return(0);
 }

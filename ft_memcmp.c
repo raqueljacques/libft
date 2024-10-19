@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,35 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
-
-//returns a pointer to the first occurrence of the character c in the string s
-char	*ft_strchr(const char *s, int c)
+// memcmp function is used to compare the first n bytes of the memory areas s1 and s2. If is equal returns 0 otherwise returns the difference between the first two differing bytes.
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
+    unsigned char *str1;
+    unsigned char *str2;
     int i;
 
+    str1 = (unsigned char *)s1;
+    str2 = (unsigned char *)s2;
     i = 0;
-    //while s[i] is not the end of the string and s[i] is not equal to c
-    while (s[i] != '\0' && s[i] != c)
+    if (n == 0)
     {
-        if (s[i] == c)
-            return ((char *)&s[i]);
+        return (0);
+    }
+    //-1 pq a contagem começa com zero
+    while (i < (n - 1))
+    {
+        if (str1[i] != str2[i])
+        {
+            return (str1[i] - str2[i]);
+        }
         i++;
     }
-    // difference between &s and *s and s
-    // *s is the value of the pointer
-    // s is the address of the pointer
-    // &s is the address of the pointer
-    return (NULL);
-}
-
-int main(void)
-{
-    char str[] = "string";
-    char *ptr;
-
-    ptr = ft_strchr(str, 'r');
-    printf("%s", ptr);
-    return(0);
+    return (0);
 }

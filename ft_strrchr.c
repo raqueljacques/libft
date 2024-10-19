@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,23 +13,20 @@
 #include "libft.h"
 #include <stdio.h>
 
-//returns a pointer to the first occurrence of the character c in the string s
-char	*ft_strchr(const char *s, int c)
+//returns a pointer to the last occurrence of the character c in the string s
+char	*ft_strrchr(const char *s, int c)
 {
     int i;
 
-    i = 0;
+    //ft_strlen returns the length of the string
+    i = ft_strlen(s);
     //while s[i] is not the end of the string and s[i] is not equal to c
-    while (s[i] != '\0' && s[i] != c)
+    while (i >= 0)
     {
         if (s[i] == c)
             return ((char *)&s[i]);
-        i++;
+        i--;
     }
-    // difference between &s and *s and s
-    // *s is the value of the pointer
-    // s is the address of the pointer
-    // &s is the address of the pointer
     return (NULL);
 }
 
@@ -38,7 +35,7 @@ int main(void)
     char str[] = "string";
     char *ptr;
 
-    ptr = ft_strchr(str, 'r');
+    ptr = ft_strrchr(str, 'r');
     printf("%s", ptr);
     return(0);
 }
