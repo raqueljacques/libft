@@ -29,8 +29,29 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len;
 	char	*str;
+    size_t i;
+    size_t j;
 
+    i = 0;
+    j = 0;
+    //Soma dos caracteres das duas strings
 	len = ft_strlen(s1) + ft_strlen(s2);
-
-
+    //Reserva memoria para as duas strings e o /0
+    str = malloc(sizeof(char) * len + 1);
+    if(!str)
+        return (NULL);
+    while (s1[i] != '\0')
+    {
+        str[j] = s1[i];
+        i++;
+        j++;
+    }
+    i = 0;
+    while (s2[i] != '\0')
+    {
+        str[j] = s2[i];
+        i++;
+        j++;
+    }
+    return (str);
 }
