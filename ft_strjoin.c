@@ -34,6 +34,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
     i = 0;
     j = 0;
+    if (!s1 || !s2)
+		return (NULL);
     //Soma dos caracteres das duas strings
 	len = ft_strlen(s1) + ft_strlen(s2);
     //Reserva memoria para as duas strings e o /0
