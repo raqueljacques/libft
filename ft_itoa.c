@@ -12,23 +12,23 @@
 
 #include "libft.h"
 
-static int	n_size(int n)
-{
-	int	i;
-	
-	i = 0;
-	if (n < 0)
-	{
-		i++;
-		n = n * -1;
-	}
-	while (n != 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
+// Função para calcular o tamanho da string necessária para representar o número
+static int n_size(int n) {
+    int i = 0;
+
+    if (n <= 0) {
+        i++; // Contar o sinal negativo ou zero
+        if (n == 0) return 1; // Se n é 0, só precisamos de 1 dígito
+        n = -n; // Tornar n positivo
+    }
+
+    while (n != 0) {
+        n /= 10; // Dividir por 10 para contar os dígitos
+        i++;
+    }
+    return i; // Retorna o número de dígitos
 }
+
 
 char	*ft_itoa(int n)
 {

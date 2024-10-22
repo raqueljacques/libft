@@ -14,6 +14,7 @@
 # define LIBFT_H //define a libft, garantindo que não será definida novamente
 
 # include <stdlib.h>
+# include <unistd.h>
 
 /* is funcions*/
 int	ft_isalpha(int c);

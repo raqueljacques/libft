@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 02:24:09 by rdos-san          #+#    #+#             */
-/*   Updated: 2024/10/22 02:26:32 by rdos-san         ###   ########.fr       */
+/*   Created: 2024/10/22 03:32:28 by rdos-san          #+#    #+#             */
+/*   Updated: 2024/10/22 03:39:24 by rdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	write(fd, &c, 1);
+	int	i;
+	
+	i = 0;
+	if (s == NULL || f == NULL)
+		return ;
+	while(s[i])
+	{
+		//Chama a função f mandando como parâmetro o indice atual e um ponteiro para
+		//o caractere atual
+		f(i, &s[i]);
+		i++;
+	}
 }
