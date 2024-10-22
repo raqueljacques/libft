@@ -18,24 +18,19 @@ char	*ft_strrchr(const char *s, int c)
 {
     int i;
 
-    //ft_strlen returns the length of the string
+    if (c == 0)
+    {
+    	return ((char *)s + ft_strlen((char *)s));
+    }
+
     i = ft_strlen(s);
-    //while s[i] is not the end of the string and s[i] is not equal to c
+
     while (i >= 0)
     {
-        if (s[i] == c)
+        if (s[i] == (unsigned char) c)
             return ((char *)&s[i]);
         i--;
     }
     return (NULL);
 }
 
-int main(void)
-{
-    char str[] = "string";
-    char *ptr;
-
-    ptr = ft_strrchr(str, 'r');
-    printf("%s", ptr);
-    return(0);
-}

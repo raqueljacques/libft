@@ -11,18 +11,19 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 //returns a pointer to the first occurrence of the character c in the string s
 char	*ft_strchr(const char *s, int c)
 {
-    int i;
+    size_t i;
 
     i = 0;
+    if (c == 0)
+    	return ((char *)s + ft_strlen(s));
     //while s[i] is not the end of the string and s[i] is not equal to c
-    while (s[i] != '\0' && s[i] != c)
+    while (s[i] != '\0')
     {
-        if (s[i] == c)
+        if ((unsigned char)s[i] == (unsigned char)c)
             return ((char *)&s[i]);
         i++;
     }
@@ -33,12 +34,3 @@ char	*ft_strchr(const char *s, int c)
     return (NULL);
 }
 
-int main(void)
-{
-    char str[] = "string";
-    char *ptr;
-
-    ptr = ft_strchr(str, 'r');
-    printf("%s", ptr);
-    return(0);
-}

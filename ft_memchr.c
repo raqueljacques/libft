@@ -12,10 +12,13 @@
 
 
 // memchr function is used to search for the first occurrence of the character c (an unsigned char) in the first n bytes of the string pointed to, by the argument s. 
+
+#include "libft.h"
+
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-    unsigned char *char_to_find;
-    unsigned char str;
+    unsigned char char_to_find;
+    unsigned char *str;
     size_t i;
 
     char_to_find = (unsigned char)c;
@@ -27,7 +30,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
     while(i < n)
     {
         if (str[i] == char_to_find)
-            return (&str[i]);
+            return ((void *)&str[i]);
         i++;
     }
     return (NULL);

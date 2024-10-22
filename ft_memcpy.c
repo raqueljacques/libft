@@ -33,21 +33,3 @@ void	*ft_memcpy(void *destination, const void *source, size_t num)
 	return(destination);
 }
 
-int	main(void)
-{
-	char	str[] = "start stop";
-	char	*str1 = "string";
-	char	str2[1];
-
-	printf("--------------------------------\n");
-	printf("%s \n", str);
-	ft_memcpy(str, str + 6, 4 * sizeof(char));
-	printf("%s \n", str);
-	
-	printf("--------------------------------\n");
-	printf("%s \n", str2);
-	ft_memcpy(str2, str1, 6);
-	printf("%s \n", str2);
-
-	return(0);
-}

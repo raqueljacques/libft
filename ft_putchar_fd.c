@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 17:01:19 by rdos-san          #+#    #+#             */
-/*   Updated: 2024/09/20 17:00:59 by rdos-san         ###   ########.fr       */
+/*   Created: 2024/10/22 02:24:09 by rdos-san          #+#    #+#             */
+/*   Updated: 2024/10/22 02:26:32 by rdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//The isalnum() function tests for any character for which isalpha(3) or isdigit(3) is true.  The value of the argument must be representable as an unsigned char or the value of EOF.
-int	ft_isalnum(int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	if(ft_isdigit(c) || ft_isalpha(c))
-	{
-		return(1);
-	}
-	return(0);
+	write(fd, c, 1);
 }

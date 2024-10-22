@@ -14,6 +14,9 @@
 // Negative, if the str1 is less than str2.
 // Positive, if the str2 is less than str1.
 // zero, if the str1 is equal to str2.
+
+#include "libft.h"
+
 int     ft_strncmp(const char *s1, const char *s2, size_t n)
 {
     size_t i;

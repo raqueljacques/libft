@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/21 23:25:55 by rdos-san          #+#    #+#             */
+/*   Updated: 2024/10/21 23:26:50 by rdos-san         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 // Reserva espaço de memória para uma copia de string
 // o argumebti da funcao precisa terminae em /0
 // Retorna um ponteiro para o espaco de armazenamento que contem
 // a string copiada
-char    *ft_strdup(char *src)
+
+#include "libft.h"
+char    *ft_strdup(const char *src)
 {
     //Variavel string que recebera o valor copiado
 	char	*new_string;
@@ -16,7 +30,7 @@ char    *ft_strdup(char *src)
         //contabiliza os caracteres
 		i++;
     // malloca na nova string o espaço referente ao numero de bytes do tipo utilozado x a quantidade de caracteres
-	new_string = (char *)malloc(sizeof(char) * i) + 1);
+	new_string = (char *)malloc(sizeof(char) * (i + 1));
 	//Se der erro na hora de mallocar vai retornar null
     if (new_string == NULL)
 		return(NULL);
@@ -34,21 +48,4 @@ char    *ft_strdup(char *src)
     //retorna a string 
 	return (new_string);
 }
-/*
-int	main(void)
-{
-	char *string;
-	string = " ";
-	char	*result = ft_strdup(string);
 
-	if (result != NULL)
-	{
-		printf("%s", result);
-		free(result);
-	}
-	else
-	{
-		printf("Memory allocation failed\n");
-	}
-	return (0);
-}*/

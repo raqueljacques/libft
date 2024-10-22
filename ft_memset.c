@@ -6,7 +6,7 @@
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 08:29:27 by rdos-san          #+#    #+#             */
-/*   Updated: 2024/09/17 08:46:39 by rdos-san         ###   ########.fr       */
+/*   Updated: 2024/10/21 21:05:22 by rdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,3 @@ void	*ft_memset(void *str, int c, size_t n)
 	}
 	return(str);
 }
-
-int	main(void)
-{
-	char	str[] = "string";
-
-
-	printf("%s\n", str);
-	ft_memset(str, '*', 2);
-	printf("%s", str);
-}
-

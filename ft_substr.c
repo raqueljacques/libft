@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 //Cria uma substring a partir de uma string a partir do começo e do tamanho definido
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -27,7 +27,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	len_s = ft_strlen(s);
 	if ((start + len) > len_s)
 		len = len_s - start;
-	if (start > len-s)
+	if (start > len_s)
 		len = 0;
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
@@ -40,13 +40,4 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	str[i] = '\0';
 	return (str);
-}
-
-int	main(void)
-{
-	char	*str;
-	str = "amendoim";
-
-	printf("%s", ft_substr(str, 2, 3));
-	return (0);
 }

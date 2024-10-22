@@ -25,15 +25,16 @@ int	ft_atoi(const char *string)
 	sign = 1;
 	i = 0;
 	n = 0;
-	//is digit funcion can recieve a char if is declared with a int?
-	if (string[0] == '-')
-	{
-		sign = -1;
+	
+	while (string[i] == ' ' || string[i] == '\n' || string[i] == '\f'
+		|| string[i] == '\t' || string[i] == '\v' || string[i] == '\r')
 		i++;
-	}
-	else if (string[0] == '+')
+	if (string[i] == '-' || string[i] == '+')
 	{
-		sign = 1;
+		if (string[i] == '-')
+		{
+			sign = -1;
+		}
 		i++;
 	}
 	while (string[i] != '\0' && ft_isdigit(string[i]))
@@ -44,16 +45,4 @@ int	ft_atoi(const char *string)
 	}
 	return(n * sign);
 
-}
-
-int	main()
-{
-	char strToConvert[] = "908475966"; 
-  
-	int ConvertedStr = ft_atoi(strToConvert); 
-  
-	printf("String to be Converted: %s\n", strToConvert); 
-	printf("Converted to Integer: %d\n", ConvertedStr); 
-  
-	return 0; 
 }

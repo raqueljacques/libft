@@ -1,8 +1,16 @@
-#include <stdio.h>
-#include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/21 21:56:12 by rdos-san          #+#    #+#             */
+/*   Updated: 2024/10/21 21:57:13 by rdos-san         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "libft.h"
 //If little is an empty string, big is returned; if little occurs nowhere in big, NULL is
 //returned; otherwise a pointer to the first character of the first occurrence of little is
 // returned.
@@ -20,7 +28,7 @@ char    *ft_strnstr(const char *big, const char *little, size_t n)
 	{
 		j = 0;	
 		//passa por todos os caracteres de little
-		while(little[j] != '\0')
+		while(little[j] != '\0' && i + j < n)
 		{
 			//Verifica se não são os mesmos caracteres, e sai do loop
 			if (little[j] != big[i + j])
@@ -36,13 +44,3 @@ char    *ft_strnstr(const char *big, const char *little, size_t n)
 	return(NULL);
 }
 
-int	main(void)
-{
-	const char *large = "For Bar Baz";
-	const char *small = "Bar";
-	char *ptr;
-
-	ptr = ft_strnstr(large, small + 3, 4);
-	printf("string: %s", ptr);
-	return(0);
-}

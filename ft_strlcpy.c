@@ -28,7 +28,7 @@ size_t  ft_strlcpy(char *dest, const char *src, size_t n){
             i++;
         }
         //put a null character in the end of the string
-        dest[i] = '\0'
+        dest[i] = '\0';
     }
     return (ft_strlen(src));
 }

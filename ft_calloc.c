@@ -6,7 +6,7 @@
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 19:52:25 by rdos-san          #+#    #+#             */
-/*   Updated: 2024/09/25 19:07:21 by rdos-san         ###   ########.fr       */
+/*   Updated: 2024/10/21 22:38:28 by rdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ void	*ft_calloc(size_t nmemb, size_t size)
     //TODO: Verificar overflow de nmemb * size pq se a multiplicação for um número mt grande e
     //passar o limite do size_t vai dar problema
     //Aloca memória para um array de nmemb elementos de size bytes cada
+    if (nmemb != 0 && size != 0)
+	    if ((nmemb * size) / size != nmemb)
+		    return (NULL);
     mem = malloc(nmemb * size);
 
     //se a memória não foi alocada, retorna NULL
