@@ -6,7 +6,7 @@
 /*   By: rdos-san <rdos-san@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 03:40:24 by rdos-san          #+#    #+#             */
-/*   Updated: 2024/10/22 03:52:57 by rdos-san         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:08:23 by rdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!str)
 		return (NULL);
 	// Enquanto a string existir
-	while (str[i])
+	while (s[i])
 	{
 		//Atribui a nova string o valor do resultado da função recebida
 		str[i] = f(i, s[i]);

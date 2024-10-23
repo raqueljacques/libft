@@ -1,3 +1,6 @@
 *.o
 *.a
+*.out
 libftTester
+libft-war-machine
+FT_SPLIT_TESTER
