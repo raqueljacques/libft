@@ -1,0 +1,143 @@
+# Define o nome da biblioteca que será criada como "libft.a"
+NAME=libft.a
+
+# Lista de arquivos fonte (.c) que serão compilados para formar a biblioteca
+SRCS=ft_bzero.c \
+     ft_isalpha.c \
+     ft_isdigit.c \
+     ft_memset.c \
+     ft_isalnum.c \
+     ft_isascii.c \
+     ft_isprint.c \
+     ft_toupper.c \
+     ft_tolower.c \
+     ft_strchr.c \
+     ft_strrchr.c \
+     ft_strncmp.c \
+     ft_memchr.c \
+     ft_memcmp.c \
+     ft_strnstr.c \
+     ft_atoi.c \
+     ft_strlcat.c \
+     ft_strlcpy.c \
+     ft_calloc.c \
+     ft_strdup.c \
+     ft_strlen.c \
+     ft_bzero.c \
+     ft_memcpy.c \
+     ft_memmove.c \
+     ft_substr.c \
+     ft_strjoin.c \
+     ft_strtrim.c \
+     ft_split.c \
+     ft_strmapi.c \
+     ft_striteri.c \
+     ft_putchar_fd.c \
+     ft_putstr_fd.c \
+     ft_putendl_fd.c \
+     ft_putnbr_fd.c \
+     ft_itoa.c
+
+# Define os arquivos objetos (.o), substituindo as extensões .c por .o a partir da lista SRCS
+# Arquivos .c são binários que são linkados com vários outros componentes e participam de um arquivo final executavel
+OBJS = $(SRCS:.c=.o)
+
+# Define os arquivos de bônus (bonus)
+BSRCS=ft_lstnew.c \
+      ft_lstadd_front.c \
+      ft_lstsize.c \
+      ft_lstlast.c \
+      ft_lstadd_back.c \
+      ft_lstdelone.c \
+      ft_lstclear.c \
+      ft_lstiter.c \
+      ft_lstmap.c
+
+# Transforma os arquivos bonus .c em arquivos .o
+BOBJECTS= $(BSRCS:.c=.o)
+
+# Define o compilador a ser usado, neste caso "cc"
+CC= cc
+
+# Define flags de compilação: "-Wall" (todas as advertências), "-Werror" (trata advertências como erros), "-Wextra" (mais advertências)
+FLAGS= -Wall -Werror -Wextra
+
+# Regra genérica para compilar arquivos .c em .o
+.c.o:
+	# Compila o arquivo .c ($<) e gera o arquivo .o correspondente
+      # $< corresponde ao nome do arquivo .c que está sendo compilado
+      # A flag -o especifica o nome do arquivo de saída (output) gerado pelo compilador.
+      # $(<:.c=.o) é uma expressão que realiza uma substituição de sufixo:
+      # pega o valor de $< (o nome do arquivo .c) e substitui o sufixo .c por .o,
+      #gerando o nome correspondente do arquivo objeto (por exemplo, ft_strlen.c vira
+	# ft_strlen.o
+      
+	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
+
+# Regra para criar a biblioteca $(NAME) a partir dos objetos $(OBJS)
+$(NAME): $(OBJS)
+	# Cria a biblioteca estática libft.a com os arquivos .o
+      # Biblioteca estática é um arquivo que contem o código compilado de várias funções que pode ser incorporada diretamente ao programa durante o processo de linkagem estática quando você compila um programa com uma lib estática o conteúdo da lib é copiado pra dentro do executável final. O executavel tem todo o código necessário para rodar sem dependender de arquivos externos durante a execução
+      # ar -> comando para criar, modificar e extrair arquivos de bibliotecas arquivadas
+      # r - repace
+      #  Ele diz ao ar para adicionar os arquivos objeto à biblioteca, substituindo os existentes se eles já estiverem presentes. Se a biblioteca ainda não existir, ela será criada.
+      # O modificador c significa "create". Ele cria a biblioteca se ela ainda não existir. Mesmo se não houver necessidade de criar, o c evita a exibição de uma mensagem de aviso.
+      #O comando ar rc $(NAME) $(OBJS):
+      #Cria ou atualiza a biblioteca estática $(NAME) (por exemplo, libft.a).
+      #Insere ou substitui os arquivos objeto $(OBJS) dentro dessa biblioteca.
+	ar rc $(NAME) $(OBJS)
+
+# Regra "all" que chama a regra principal para compilar a biblioteca
+all: $(NAME)
+
+# Regra para limpar os arquivos objetos (.o)
+clean:
+	# Remove os arquivos .o da biblioteca principal e dos bonus
+	rm -f $(OBJS) $(BOBJECTS)
+
+# Regra para limpar tudo, incluindo a biblioteca gerada
+fclean: clean
+	# Remove o arquivo da biblioteca (libft.a)
+	rm -rf $(NAME)
+
+# Regra para recompilar tudo do zero
+re: fclean $(NAME)
+
+# Regra para recompilar e executar o programa
+run: re
+	# Limpa o terminal
+	clear
+	# Compila "main.c" e linka com a biblioteca
+	$(CC) $(FLAGS) main.c $(NAME)
+	# Executa o programa gerado
+	./a.out
+
+# Regra para compilar os arquivos bônus e incluir na biblioteca
+bonus: $(OBJS) $(BOBJECTS)
+	# Cria a biblioteca libft.a incluindo os objetos de bonus
+	ar rc $(NAME) $(OBJS) $(BOBJECTS)
+
+# Regra para recompilar e executar o programa com a flag "-l bsd"
+run2: re
+	# Limpa o terminal
+	clear
+	# Compila com a flag "-l bsd" para usar a biblioteca BSD
+	$(CC) $(FLAGS) main.c $(NAME) -l bsd
+	# Executa o programa
+	./a.out
+
+# Regra para recompilar e rodar testes via docker
+test: re
+	# Limpa o terminal
+	clear
+	# Executa um script bash chamado "run_docker.sh" para testes
+	bash run_docker.sh
+
+# Regra para recompilar e rodar o programa com a flag "-l bsd"
+t: re
+	# Limpa o terminal
+	clear
+	# Compila e linka a biblioteca BSD
+	$(CC) main.c $(NAME) -l bsd
+	# Executa o programa
+	./a.out
